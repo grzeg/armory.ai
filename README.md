@@ -22,7 +22,7 @@ Like the armory in The Matrix: the place I come back to before a mission, pick w
 ## Loadout
 
 | Folder | What lives there |
-|---|---|
+| --- | --- |
 | [`skills/`](skills) | Reusable procedures (`skills/<name>/SKILL.md`) |
 | [`agents/`](agents) | Subagent definitions |
 | [`commands/`](commands) | Slash commands |
