@@ -1,11 +1,11 @@
 # AGENTS.md
 
-<Jedno zdanie: czym jest projekt i jaki ma stack.>
+<One sentence: what the project is and its stack.>
 
-## Stack (ustalony, nie zmieniać bez pytania)
+## Stack (fixed, do not change without asking)
 
-- <język / framework>
-- <narzędzia, CMS, baza, deploy>
+- <language / framework>
+- <tooling, CMS, database, deploy>
 
 ## Commands
 
@@ -15,56 +15,56 @@
 
 ## Layout
 
-- `<dir>`: <co tu leży>
+- `<dir>`: <what lives there>
 
 ## Conventions
 
-- <reguła, której nie widać z samego kodu>
-- Brak nowych zależności poza ustalonym stackiem bez zapytania usera.
-- Nie dodawaj treści placeholder typu "Lorem ipsum" w commitowanym kodzie — użyj wyraźnie oznaczonych TODO albo zapytaj usera o realną treść.
-- Nie wymyślaj danych (liczby, metryki, nazwy, cytaty) — jeśli user ich nie podał, zostaw TODO albo zapytaj.
+- <rule that is not obvious from the code>
+- No new dependencies outside the fixed stack without asking the user.
+- No placeholder content such as "Lorem ipsum" in committed code. Use clearly marked TODOs or ask the user for real content.
+- Do not invent data (numbers, metrics, names, quotes). If the user did not provide it, leave a TODO or ask.
 
 ## Gotchas
 
-- <rzecz, którą łatwo zepsuć>
+- <thing that is easy to break>
 
-## Testy i formatowanie
+## Tests and formatting
 
-- Przed uznaniem zadania za skończone uruchom `<komenda testów>`.
-- Dla nowej logiki bez UI (helpery, reguły) dodaj kolokowany test, wzorując się na istniejących.
-- Formatter (`<komenda>`) jest źródłem prawdy dla stylu — uruchom go przed commitem. Linter nie duplikuje reguł stylistycznych.
-- Opcjonalnie: hook commit-msg (commitlint) wymusza Conventional Commits, zamiast polegać na samej konwencji w dokumentacji.
+- Before calling a task done, run `<test command>`.
+- For new logic without UI (helpers, rules), add a colocated test modeled on the existing ones.
+- The formatter (`<command>`) is the source of truth for style. Run it before committing. The linter does not duplicate style rules.
+- Optional: a commit-msg hook (commitlint) enforces Conventional Commits instead of relying on documentation alone.
 
-## Deploy i CI
+## Deploy and CI
 
-- Czerwony CI traktuj tak samo jak czerwony build — nie mergować.
-- Testy, które nie biegną w buildzie hosta (np. unit, e2e), muszą biec w CI jako wymagany check na PR.
-- Dependabot otwiera PR-y z aktualizacjami — wymagają review usera, nie mergować automatycznie.
-- Zmienne środowiskowe ustawia się w dashboardzie hosta (per environment), nie w repo. `.env.example` to tylko wzór dla lokalnego dev.
+- Treat a red CI the same as a red build: do not merge.
+- Tests that do not run in the host's build (unit, e2e) must run in CI as a required check on PRs.
+- Dependabot opens PRs for updates. They need user review; never merge automatically.
+- Environment variables are set in the host's dashboard (per environment), not in the repo. `.env.example` is only a template for local dev.
 
-## Zakres i granice
+## Scope and boundaries
 
-- Nie publikuj (deploy, push do zdalnego repo) bez wyraźnej zgody usera na dany krok.
-- Nie zmieniaj ustalonego stacku, struktury ani zasad projektu bez pytania — to decyzje usera, nie agenta.
-- Przy niejasności co do treści (dane liczbowe, nazwy, zdjęcia) — pytaj usera, nie zgaduj.
+- Do not publish (deploy, push to a remote) without the user's explicit approval for that step.
+- Do not change the fixed stack, structure or project rules without asking. Those are the user's decisions, not the agent's.
+- When content is unclear (numbers, names, photos), ask the user instead of guessing.
 
-Kiedy decydować samemu, a kiedy pytać:
+When to decide yourself and when to ask:
 
-- **Decyduj sam, bez pytania**: treść commit message, nazwy branchy, drobne konwencje kodu (formatowanie, nazwy zmiennych/plików) w ramach ustalonego stacku.
-- **Pytaj, gdy jest więcej niż jedno rozsądne podejście**: wybór konkretnego wzorca/biblioteki/podejścia w ramach ustalonego stacku (np. jak rozbić plik na moduły) — jeśli nie ma jednego oczywistego rozwiązania, zatrzymaj się i zapytaj zamiast zgadywać.
+- **Decide yourself, no question needed**: commit message text, branch names, small code conventions (formatting, variable and file names) within the fixed stack.
+- **Ask when there is more than one reasonable approach**: choice of a specific pattern, library or approach within the fixed stack (e.g. how to split a file into modules). If there is no single obvious solution, stop and ask instead of guessing.
 
-## Model routing (agent AI)
+## Model routing (AI agent)
 
-- Boilerplate, testy, mechaniczne rename/refaktor — tani/szybki model wystarcza.
-- Decyzje architektoniczne, routing, integracje, cokolwiek o dużym koszcie błędu — mocniejszy model.
+- Boilerplate, tests, mechanical renames and refactors: a cheap, fast model is enough.
+- Architecture decisions, routing, integrations, anything where a mistake is costly: a stronger model.
 
-## Styl komunikacji agenta
+## Agent communication style
 
-- W czacie: zwięźle, bez lania wody, bez grzecznościowych zwrotów — meritum, nie fluff. Nie dotyczy kodu, commitów i opisów PR — te zawsze pełnym, poprawnym językiem.
-- Nie skracaj kosztem treści technicznej — liczby, nazwy plików, konkretne komendy zawsze zostają.
+- In chat: concise, no filler, no pleasantries. Substance, not fluff. This does not apply to code, commits and PR descriptions, which always use full, correct language.
+- Never shorten at the expense of technical content: numbers, file names and exact commands always stay.
 
 ## Commit messages
 
-- Konwencja: [Conventional Commits](https://www.conventionalcommits.org/) — prefiks `feat:`, `fix:`, `chore:`, `refactor:`, `docs:`, `test:`, `ci:`. Subject po angielsku, tryb rozkazujący, bez kropki na końcu.
-- Body tylko gdy "why" nieoczywiste z samego diffu (nie opisuj "co" — to widać w kodzie).
-- Skill `/caveman-commit` generuje message w tym samym formacie (Conventional Commits, ultra-skompresowany) — użyj go swobodnie, nie zastępuje tej konwencji, tylko ją realizuje szybciej.
+- Convention: [Conventional Commits](https://www.conventionalcommits.org/) with prefixes `feat:`, `fix:`, `chore:`, `refactor:`, `docs:`, `test:`, `ci:`. Subject in English, imperative mood, no trailing period.
+- Add a body only when the "why" is not obvious from the diff (do not describe the "what"; the code shows it).
+- The `/caveman-commit` skill generates messages in the same format (Conventional Commits, ultra-compressed). Use it freely; it implements this convention faster, it does not replace it.
